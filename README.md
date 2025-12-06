@@ -1,40 +1,34 @@
-# WEB422 Assignment - Book Management Application
+# WEB422 Assignment 1 - Book Search & Favourites
 
-A Next.js application for searching and managing favourite books using the Open Library API.
+A Next.js web application that allows users to search for books using the Open Library API and save their favourite books to a personalized collection.
 
 ## Features
 
-- 📚 Search books from Open Library
-- ⭐ Add/remove books from favourites
-- 🔐 User authentication (register/login)
-- 📱 Responsive design with React Bootstrap
-- 🔄 Real-time state management with Jotai
+- Search and browse books from Open Library database
+- View detailed information about individual books
+- User registration and authentication
+- Add books to personal favourites list
+- Manage favourites (add/remove books)
+- Responsive design using React Bootstrap
 
-## Local Development
+## Getting Started
 
-### Prerequisites
+### Installation
 
-- Node.js 16.x or higher
-- npm or yarn
-
-### Setup
-
-1. Install dependencies:
+1. Clone the repository
+2. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Create a `.env.local` file:
-   ```bash
-   cp .env.local.example .env.local
+3. Create `.env.local` file with:
    ```
-
-3. Start the development server:
+   NEXT_PUBLIC_API_URL=http://localhost:3000/api
+   ```
+4. Run the development server:
    ```bash
    npm run dev
    ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+5. Open [http://localhost:3000](http://localhost:3000)
 
 ## Deploying to Vercel
 
@@ -43,82 +37,20 @@ A Next.js application for searching and managing favourite books using the Open 
 1. Initialize git (if not already done):
    ```bash
    git init
-   git add .
-   git commit -m "Initial commit"
-   ```
+## Deployment
 
-2. Push to GitHub:
-   ```bash
-   git remote add origin <your-github-repo-url>
-   git branch -M main
-   git push -u origin main
-   ```
+The application is deployed on Vercel. To deploy:
 
-### Step 2: Deploy to Vercel
+1. Push code to GitHub
+2. Import project in Vercel
+3. Add environment variable `NEXT_PUBLIC_API_URL` with your deployment URL + `/api`
+4. Deploy
 
-1. Go to [Vercel](https://vercel.com) and sign in with your GitHub account
+## Technical Notes
 
-2. Click "Add New" → "Project"
-
-3. Import your GitHub repository
-
-4. Configure your project:
-   - **Framework Preset**: Next.js (should be auto-detected)
-   - **Root Directory**: `./` (leave as default)
-   - **Build Command**: `next build` (default)
-   - **Output Directory**: `.next` (default)
-
-5. **Add Environment Variable**:
-   - Click "Environment Variables"
-   - Add the following:
-     - **Name**: `NEXT_PUBLIC_API_URL`
-     - **Value**: Leave this empty for now, we'll update it after the first deployment
-   - Click "Add"
-
-6. Click "Deploy"
-
-### Step 3: Update Environment Variable
-
-After the first deployment completes:
-
-1. Copy your production URL (e.g., `https://your-app-name.vercel.app`)
-
-2. Go to your project settings in Vercel:
-   - Click "Settings" → "Environment Variables"
-   - Find `NEXT_PUBLIC_API_URL`
-   - Click "Edit"
-   - Set the value to: `https://your-app-name.vercel.app/api`
-   - Click "Save"
-
-3. Redeploy your application:
-   - Go to "Deployments"
-   - Click the three dots on the latest deployment
-   - Click "Redeploy"
-
-### Step 4: Verify Deployment
-
-1. Visit your production URL
-2. Test the following:
-   - ✅ Home page loads with book search results
-   - ✅ Register a new account
-   - ✅ Login with your account
-   - ✅ Add books to favourites
-   - ✅ View favourites page
-   - ✅ Remove books from favourites
-   - ✅ Logout functionality
-
-## Important Notes
-
-- The application uses a mock in-memory database for development
-- User data is stored in memory and will reset when the server restarts
-- For production, consider implementing a real database (MongoDB, PostgreSQL, etc.)
-
-## Project Structure
-
-```
-├── components/          # React components
-│   ├── BookCard.js     # Book card display
-│   ├── BookDetails.js  # Book details view
+- Uses mock in-memory database (data resets on server restart)
+- JWT authentication with localStorage
+- Client-side state management using Jotai
 │   ├── Layout.js       # App layout wrapper
 │   ├── MainNav.js      # Navigation bar
 │   ├── PageHeader.js   # Page header component
